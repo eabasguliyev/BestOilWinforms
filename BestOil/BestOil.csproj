@@ -46,13 +46,19 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Abstracts\Product.cs" />
+    <Compile Include="BestOil.cs" />
     <Compile Include="DraggableForm.cs" />
+    <Compile Include="Abstracts\Id.cs" />
+    <Compile Include="Entities\Food.cs" />
+    <Compile Include="Entities\Fuel.cs" />
     <Compile Include="Form1.cs">
       <SubType>Form</SubType>
     </Compile>
     <Compile Include="Form1.Designer.cs">
       <DependentUpon>Form1.cs</DependentUpon>
     </Compile>
+    <Compile Include="Helpers\BestOilHelper.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <EmbeddedResource Include="Form1.resx">
@@ -87,5 +93,6 @@
   <ItemGroup>
     <None Include="Resources\bestOil.png" />
   </ItemGroup>
+  <ItemGroup />
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>
