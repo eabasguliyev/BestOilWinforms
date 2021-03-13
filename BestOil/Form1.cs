@@ -43,31 +43,51 @@ namespace BestOil
         private void LiterRdBtn_CheckedChanged(object sender, EventArgs e)
         {
             LiterMsBx.Enabled = LiterRdBtn.Checked;
+
+            if(!LiterRdBtn.Checked)
+                LiterMsBx.Text = String.Empty;
         }
 
         private void PriceRdBtn_CheckedChanged(object sender, EventArgs e)
         {
             PriceMsBx.Enabled = PriceRdBtn.Checked;
+
+            if(!PriceRdBtn.Checked)
+                PriceMsBx.Text = String.Empty;
         }
 
         private void HotDogChBx_CheckedChanged(object sender, EventArgs e)
         {
             HotDogCountMsBx.Enabled = HotDogChBx.Checked;
+
+            if (!HotDogChBx.Checked)
+            {
+                HotDogCountMsBx.Text = String.Empty;
+            }
         }
 
         private void HamburgerChBx_CheckedChanged(object sender, EventArgs e)
         {
             HamburgerCountMsBx.Enabled = HamburgerChBx.Checked;
+
+            if (!HamburgerChBx.Checked)
+                HamburgerCountMsBx.Text = String.Empty;
         }
 
         private void FriesChBx_CheckedChanged(object sender, EventArgs e)
         {
             FriesCountMsBx.Enabled = FriesChBx.Checked;
+
+            if(!FriesChBx.Checked)
+                FriesCountMsBx.Text = String.Empty;
         }
 
         private void CocaColaChBx_CheckedChanged(object sender, EventArgs e)
         {
             CocaColaCountMsBx.Enabled = CocaColaChBx.Checked;
+
+            if(!CocaColaChBx.Checked)
+                CocaColaCountMsBx.Text = String.Empty;
         }
     }
 }

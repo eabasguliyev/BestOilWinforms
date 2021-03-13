@@ -532,7 +532,6 @@ namespace BestOil
             this.HotDogCountMsBx.Name = "HotDogCountMsBx";
             this.HotDogCountMsBx.Size = new System.Drawing.Size(67, 27);
             this.HotDogCountMsBx.TabIndex = 22;
-            this.HotDogCountMsBx.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
             this.HotDogCountMsBx.ValidatingType = typeof(int);
             // 
             // HamburgerCountMsBx
@@ -543,7 +542,6 @@ namespace BestOil
             this.HamburgerCountMsBx.Name = "HamburgerCountMsBx";
             this.HamburgerCountMsBx.Size = new System.Drawing.Size(67, 27);
             this.HamburgerCountMsBx.TabIndex = 23;
-            this.HamburgerCountMsBx.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
             this.HamburgerCountMsBx.ValidatingType = typeof(int);
             // 
             // FriesCountMsBx
@@ -554,7 +552,6 @@ namespace BestOil
             this.FriesCountMsBx.Name = "FriesCountMsBx";
             this.FriesCountMsBx.Size = new System.Drawing.Size(67, 27);
             this.FriesCountMsBx.TabIndex = 24;
-            this.FriesCountMsBx.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
             this.FriesCountMsBx.ValidatingType = typeof(int);
             // 
             // CocaColaCountMsBx
@@ -565,7 +562,6 @@ namespace BestOil
             this.CocaColaCountMsBx.Name = "CocaColaCountMsBx";
             this.CocaColaCountMsBx.Size = new System.Drawing.Size(67, 27);
             this.CocaColaCountMsBx.TabIndex = 25;
-            this.CocaColaCountMsBx.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
             this.CocaColaCountMsBx.ValidatingType = typeof(int);
             // 
             // LiterMsBx
