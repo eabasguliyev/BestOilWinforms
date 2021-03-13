@@ -1,11 +1,8 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.ComponentModel;
-using System.Data;
 using System.Drawing;
+using System.IO;
 using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.Windows.Forms;
 using BestOil.Entities;
 using BestOil.Helpers;
@@ -208,6 +205,106 @@ namespace BestOil
 
                 _bestOil.FoodsCount[foodName] = newCount;
             }
+        }
+
+        private bool CheckOrder()
+        {
+            var emptyCost = "0.00";
+
+            return !(FuelCostTxtBx.Text == emptyCost && CafeCostTxtBx.Text == emptyCost);
+        }
+        private Bill CreateNewBill()
+        {
+            var newBill = new Bill();
+            var emptyCost = "0.00";
+
+            if (FuelCostTxtBx.Text != emptyCost)
+            {
+                var fuelItem = new FuelItem();
+
+                fuelItem.Fuel = FuelsList.SelectedItem as Fuel;
+
+                fuelItem.Liter = (LiterRdBtn.Checked)
+                    ? Convert.ToDouble(LiterMsBx.Text)
+                    : Convert.ToDouble(LiterTxtBx.Text);
+
+                fuelItem.Cost = Convert.ToDouble(FuelCostTxtBx.Text);
+
+                newBill.FuelItem = fuelItem;
+            }
+
+            if (CafeCostTxtBx.Text != emptyCost)
+            {
+                var foodItems = new List<FoodItem>();
+                
+                if (HotDogChBx.Checked)
+                {
+                    foodItems.Add(CreateNewFoodItem(HotDogCountMsBx, "Hot-Dog"));
+                }
+
+                if (HamburgerChBx.Checked)
+                {
+                    foodItems.Add(CreateNewFoodItem(HamburgerCountMsBx, "Hamburger"));
+                }
+
+                if (FriesChBx.Checked)
+                {
+                    foodItems.Add(CreateNewFoodItem(FriesCountMsBx, "Fries"));
+                }
+
+                if (CocaColaChBx.Checked)
+                {
+                    foodItems.Add(CreateNewFoodItem(CocaColaCountMsBx, "Coca-Cola"));
+                }
+
+                newBill.FoodItems = foodItems;
+            }
+
+            newBill.TotalCost = newBill.FuelItem.Cost + newBill.FoodItems.Sum(f => f.Cost);
+            return newBill;
+        }
+        private FoodItem CreateNewFoodItem(MaskedTextBox foodCountMsBox, string foodName)
+        {
+            var foodItem = new FoodItem();
+
+            foodItem.Food = new Food()
+            {
+                Name = foodName,
+                Price = _bestOil[foodName],
+            };
+
+            foodItem.Count = Convert.ToInt32(foodCountMsBox.Text);
+
+            foodItem.Cost = foodItem.Food.Price * foodItem.Count;
+
+            return foodItem;
+        }
+
+        private void PayBtn_Click(object sender, EventArgs e)
+        {
+            if (!CheckOrder())
+            {
+                MessageBox.Show("There is nothing to calculate!", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                return;
+            }
+
+            var newBill = CreateNewBill();
+            TotalCostTxtBx.Text = newBill.TotalCost.ToString("F2");
+            _bestOil.Bills.Add(newBill);
+            SaveToFiles(newBill);
+        }
+
+        private void SaveToFiles(Bill bill)
+        {
+            var directoryName = @"Bills\";
+
+            if (!Directory.Exists(directoryName))
+                Directory.CreateDirectory(directoryName);
+
+            var fileName = FileHelper.CreateNewFileName(bill.Guid);
+
+
+            FileHelper.WriteToJsonFile(bill, $"{directoryName}{fileName}.json");
         }
     }
 }

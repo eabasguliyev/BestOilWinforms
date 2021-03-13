@@ -72,7 +72,7 @@ namespace BestOil
             this.CafeCostTxtBx = new System.Windows.Forms.TextBox();
             this.label5 = new System.Windows.Forms.Label();
             this.groupBox3 = new System.Windows.Forms.GroupBox();
-            this.textBox14 = new System.Windows.Forms.TextBox();
+            this.TotalCostTxtBx = new System.Windows.Forms.TextBox();
             this.label6 = new System.Windows.Forms.Label();
             this.pictureBox2 = new System.Windows.Forms.PictureBox();
             this.PayBtn = new System.Windows.Forms.Button();
@@ -570,7 +570,7 @@ namespace BestOil
             // groupBox3
             // 
             this.groupBox3.BackgroundImageLayout = System.Windows.Forms.ImageLayout.None;
-            this.groupBox3.Controls.Add(this.textBox14);
+            this.groupBox3.Controls.Add(this.TotalCostTxtBx);
             this.groupBox3.Controls.Add(this.label6);
             this.groupBox3.Controls.Add(this.pictureBox2);
             this.groupBox3.Controls.Add(this.PayBtn);
@@ -584,19 +584,19 @@ namespace BestOil
             this.groupBox3.TabStop = false;
             this.groupBox3.Text = "Total Cost";
             // 
-            // textBox14
+            // TotalCostTxtBx
             // 
-            this.textBox14.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(170)))), ((int)(((byte)(177)))), ((int)(((byte)(197)))));
-            this.textBox14.BorderStyle = System.Windows.Forms.BorderStyle.None;
-            this.textBox14.Enabled = false;
-            this.textBox14.Font = new System.Drawing.Font("Microsoft Sans Serif", 22.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(162)));
-            this.textBox14.Location = new System.Drawing.Point(392, 42);
-            this.textBox14.Multiline = true;
-            this.textBox14.Name = "textBox14";
-            this.textBox14.Size = new System.Drawing.Size(259, 45);
-            this.textBox14.TabIndex = 10;
-            this.textBox14.Text = "0.00";
-            this.textBox14.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
+            this.TotalCostTxtBx.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(170)))), ((int)(((byte)(177)))), ((int)(((byte)(197)))));
+            this.TotalCostTxtBx.BorderStyle = System.Windows.Forms.BorderStyle.None;
+            this.TotalCostTxtBx.Enabled = false;
+            this.TotalCostTxtBx.Font = new System.Drawing.Font("Microsoft Sans Serif", 22.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(162)));
+            this.TotalCostTxtBx.Location = new System.Drawing.Point(392, 42);
+            this.TotalCostTxtBx.Multiline = true;
+            this.TotalCostTxtBx.Name = "TotalCostTxtBx";
+            this.TotalCostTxtBx.Size = new System.Drawing.Size(259, 45);
+            this.TotalCostTxtBx.TabIndex = 10;
+            this.TotalCostTxtBx.Text = "0.00";
+            this.TotalCostTxtBx.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
             // 
             // label6
             // 
@@ -628,8 +628,9 @@ namespace BestOil
             this.PayBtn.Name = "PayBtn";
             this.PayBtn.Size = new System.Drawing.Size(208, 66);
             this.PayBtn.TabIndex = 1;
-            this.PayBtn.Text = "Pay";
+            this.PayBtn.Text = "Calculate";
             this.PayBtn.UseVisualStyleBackColor = false;
+            this.PayBtn.Click += new System.EventHandler(this.PayBtn_Click);
             // 
             // ClearBtn
             // 
@@ -717,7 +718,7 @@ namespace BestOil
         private System.Windows.Forms.TextBox FuelCostTxtBx;
         private System.Windows.Forms.TextBox CafeCostTxtBx;
         private System.Windows.Forms.Label label5;
-        private System.Windows.Forms.TextBox textBox14;
+        private System.Windows.Forms.TextBox TotalCostTxtBx;
         private System.Windows.Forms.Label label6;
         private System.Windows.Forms.MaskedTextBox CocaColaCountMsBx;
         private System.Windows.Forms.MaskedTextBox FriesCountMsBx;
