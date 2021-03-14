@@ -4,6 +4,8 @@ using System.Text;
 using System.Windows.Forms;
 using BestOil.Entities;
 using Newtonsoft.Json;
+using PdfSharp.Drawing;
+using PdfSharp.Pdf;
 
 namespace BestOil.Helpers
 {
@@ -32,9 +34,21 @@ namespace BestOil.Helpers
             }
         }
 
-        public static void WriteToPdf(Bill bill, string filePath)
+        public static void WriteToPdf(string billText, string filePath)
         {
-
+            PdfDocument document = new PdfDocument();
+            
+            PdfPage page = document.AddPage();
+            
+            XGraphics gfx = XGraphics.FromPdfPage(page);
+            
+            XFont font = new XFont("Verdana", 20, XFontStyle.Bold);
+            
+            gfx.DrawString(billText, font, XBrushes.Black,
+                new XRect(0, 0, page.Width, page.Height),
+                XStringFormat.TopLeft);
+            
+            document.Save(filePath);
         }
 
         public static string CreateNewFileName(Guid billId)

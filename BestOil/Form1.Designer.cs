@@ -573,8 +573,8 @@ namespace BestOil
             this.groupBox3.Controls.Add(this.TotalCostTxtBx);
             this.groupBox3.Controls.Add(this.label6);
             this.groupBox3.Controls.Add(this.pictureBox2);
-            this.groupBox3.Controls.Add(this.PayBtn);
             this.groupBox3.Controls.Add(this.ClearBtn);
+            this.groupBox3.Controls.Add(this.PayBtn);
             this.groupBox3.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.groupBox3.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(162)));
             this.groupBox3.Location = new System.Drawing.Point(14, 440);
@@ -645,6 +645,7 @@ namespace BestOil
             this.ClearBtn.Text = "Clear";
             this.ClearBtn.UseVisualStyleBackColor = false;
             this.ClearBtn.Visible = false;
+            this.ClearBtn.Click += new System.EventHandler(this.ClearBtn_Click);
             // 
             // Form1
             // 

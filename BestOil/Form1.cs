@@ -292,6 +292,17 @@ namespace BestOil
             TotalCostTxtBx.Text = newBill.TotalCost.ToString("F2");
             _bestOil.Bills.Add(newBill);
             SaveToFiles(newBill);
+
+            MessageBox.Show("Calculated. Bill saved to file.", "Info", MessageBoxButtons.OK,
+                MessageBoxIcon.Information);
+
+            ChangeButtonsVisibility();
+        }
+
+        private void ChangeButtonsVisibility()
+        {
+            PayBtn.Visible = !PayBtn.Visible;
+            ClearBtn.Visible = !ClearBtn.Visible;
         }
 
         private void SaveToFiles(Bill bill)
@@ -303,8 +314,43 @@ namespace BestOil
 
             var fileName = FileHelper.CreateNewFileName(bill.Guid);
 
+                
+            //save to json file
 
             FileHelper.WriteToJsonFile(bill, $"{directoryName}{fileName}.json");
+
+            //save to pdf file
+
+            var desktopFolderPath = Environment.GetFolderPath(Environment.SpecialFolder.Desktop);
+
+            FileHelper.WriteToPdf(BestOilHelper.GetBillText(bill), $@"{desktopFolderPath}\{fileName}.pdf");
+        }
+
+        private void ClearBtn_Click(object sender, EventArgs e)
+        {
+            ClearUserInputs();
+            TotalCostTxtBx.Text = "0.00";
+            ChangeButtonsVisibility();
+        }
+
+        private void ClearUserInputs()
+        {
+            if (LiterRdBtn.Checked)
+                LiterRdBtn.Checked = !LiterRdBtn.Checked;
+            else
+                PriceRdBtn.Checked = !PriceRdBtn.Checked;
+
+            if (HotDogChBx.Checked)
+                HotDogChBx.Checked = !HotDogChBx.Checked;
+
+            if (HamburgerChBx.Checked)
+                HamburgerChBx.Checked = !HamburgerChBx.Checked;
+
+            if (FriesChBx.Checked)
+                FriesChBx.Checked = !FriesChBx.Checked;
+
+            if (CocaColaChBx.Checked)
+                CocaColaChBx.Checked = !CocaColaChBx.Checked;
         }
     }
 }

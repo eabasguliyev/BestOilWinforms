@@ -11,7 +11,6 @@ namespace BestOil.Entities
         public double TotalCost { get; set; }
         public Bill()
         {
-            FuelItem = new FuelItem();
             FoodItems = new List<FoodItem>();
         }
     }

@@ -1,4 +1,7 @@
 ﻿using System.Collections.Generic;
+using System.Linq;
+using System.Text;
+using System.Windows.Forms.VisualStyles;
 using BestOil.Abstracts;
 using BestOil.Entities;
 
@@ -56,6 +59,43 @@ namespace BestOil.Helpers
             };
 
             return foods;
+        }
+
+        public static string GetBillText(Bill bill)
+        {
+            var sb = new StringBuilder();
+
+            sb.Append('*', 30);
+
+            sb.Append("\nFuelling name: Best Oil\n");
+
+            if(bill.FuelItem != null)
+            {
+                sb.Append($"Fuel name: {bill.FuelItem.Fuel.Name}\n");
+                sb.Append($"Price: {bill.FuelItem.Fuel.Price} usd\n");
+                sb.Append($"Liter: {bill.FuelItem.Liter} liter\n");
+                sb.Append($"Fuel cost: {bill.FuelItem.Cost} usd\n");
+            }
+
+            sb.Append("\n");
+
+            if (bill.FoodItems.Count > 0)
+            {
+                foreach (var foodItem in bill.FoodItems)
+                {
+                    sb.Append($"Food name: {foodItem.Food.Name}\n");
+                    sb.Append($"Price: {foodItem.Food.Price} usd\n");
+                    sb.Append($"Amount: {foodItem.Count}\n\n");
+                    sb.Append($"Cost: {foodItem.Cost} usd\n\n");
+                }
+
+                sb.Append($"Foods cost: {bill.FoodItems.Sum(f => f.Cost)}\n\n");
+            }
+
+            sb.Append($"Total cost: {bill.TotalCost}\n");
+            sb.Append('*', 30);
+
+            return sb.ToString();
         }
     }
 }
