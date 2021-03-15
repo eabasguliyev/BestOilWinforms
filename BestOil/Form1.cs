@@ -12,6 +12,7 @@ namespace BestOil
     public partial class Form1 : Form
     {
         private BestOil _bestOil;
+        private Dictionary<string, int> _lastFoodsCount { get; set; }
         public Form1()
         {
             InitializeComponent();
@@ -21,6 +22,8 @@ namespace BestOil
                 Fuels = BestOilHelper.GetFuels(),
                 Foods = BestOilHelper.GetFoods(),
             };
+
+            _lastFoodsCount = new Dictionary<string, int>();
         }
 
         private void panel1_MouseDown(object sender, MouseEventArgs e)
@@ -177,9 +180,9 @@ namespace BestOil
 
             if (String.IsNullOrWhiteSpace(foodCountMsBx.Text))
             {
-                totalCost -= _bestOil[foodName] * _bestOil.FoodsCount[foodName];
+                totalCost -= _bestOil[foodName] * _lastFoodsCount[foodName];
                 CafeCostTxtBx.Text = totalCost.ToString("F2");
-                _bestOil.FoodsCount[foodName] = 0;
+                _lastFoodsCount[foodName] = 0;
             }
             else
             {
@@ -187,7 +190,7 @@ namespace BestOil
 
                 try
                 {
-                    lastCount = _bestOil.FoodsCount[foodName];
+                    lastCount = _lastFoodsCount[foodName];
                 }
                 catch
                 {
@@ -203,7 +206,7 @@ namespace BestOil
 
                 CafeCostTxtBx.Text = (totalCost + foodCost).ToString("F2");
 
-                _bestOil.FoodsCount[foodName] = newCount;
+                _lastFoodsCount[foodName] = newCount;
             }
         }
 
@@ -237,22 +240,22 @@ namespace BestOil
             {
                 var foodItems = new List<FoodItem>();
                 
-                if (HotDogChBx.Checked)
+                if (HotDogChBx.Checked && !string.IsNullOrWhiteSpace(HotDogCountMsBx.Text))
                 {
                     foodItems.Add(CreateNewFoodItem(HotDogCountMsBx, "Hot-Dog"));
                 }
 
-                if (HamburgerChBx.Checked)
+                if (HamburgerChBx.Checked && !string.IsNullOrWhiteSpace(HamburgerCountMsBx.Text))
                 {
                     foodItems.Add(CreateNewFoodItem(HamburgerCountMsBx, "Hamburger"));
                 }
 
-                if (FriesChBx.Checked)
+                if (FriesChBx.Checked && !string.IsNullOrWhiteSpace(FriesCountMsBx.Text))
                 {
                     foodItems.Add(CreateNewFoodItem(FriesCountMsBx, "Fries"));
                 }
 
-                if (CocaColaChBx.Checked)
+                if (CocaColaChBx.Checked && !string.IsNullOrWhiteSpace(CocaColaCountMsBx.Text))
                 {
                     foodItems.Add(CreateNewFoodItem(CocaColaCountMsBx, "Coca-Cola"));
                 }
@@ -296,9 +299,16 @@ namespace BestOil
             MessageBox.Show("Calculated. Bill saved to file.", "Info", MessageBoxButtons.OK,
                 MessageBoxIcon.Information);
 
+            ChangeProgramUseability();
             ChangeButtonsVisibility();
         }
 
+        private void ChangeProgramUseability()
+        {
+            groupBox1.Enabled = !groupBox1.Enabled;
+            groupBox2.Enabled = !groupBox2.Enabled;
+
+        }
         private void ChangeButtonsVisibility()
         {
             PayBtn.Visible = !PayBtn.Visible;
@@ -336,6 +346,8 @@ namespace BestOil
 
         private void ClearUserInputs()
         {
+            ChangeProgramUseability();
+
             if (LiterRdBtn.Checked)
                 LiterRdBtn.Checked = !LiterRdBtn.Checked;
             else

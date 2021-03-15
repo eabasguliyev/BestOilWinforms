@@ -75,8 +75,8 @@ namespace BestOil
             this.TotalCostTxtBx = new System.Windows.Forms.TextBox();
             this.label6 = new System.Windows.Forms.Label();
             this.pictureBox2 = new System.Windows.Forms.PictureBox();
-            this.PayBtn = new System.Windows.Forms.Button();
             this.ClearBtn = new System.Windows.Forms.Button();
+            this.PayBtn = new System.Windows.Forms.Button();
             this.panel1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
             this.groupBox1.SuspendLayout();
@@ -573,8 +573,8 @@ namespace BestOil
             this.groupBox3.Controls.Add(this.TotalCostTxtBx);
             this.groupBox3.Controls.Add(this.label6);
             this.groupBox3.Controls.Add(this.pictureBox2);
-            this.groupBox3.Controls.Add(this.ClearBtn);
             this.groupBox3.Controls.Add(this.PayBtn);
+            this.groupBox3.Controls.Add(this.ClearBtn);
             this.groupBox3.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.groupBox3.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(162)));
             this.groupBox3.Location = new System.Drawing.Point(14, 440);
@@ -618,20 +618,6 @@ namespace BestOil
             this.pictureBox2.TabIndex = 0;
             this.pictureBox2.TabStop = false;
             // 
-            // PayBtn
-            // 
-            this.PayBtn.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(74)))), ((int)(((byte)(84)))), ((int)(((byte)(109)))));
-            this.PayBtn.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.PayBtn.Font = new System.Drawing.Font("Microsoft Sans Serif", 13.8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(162)));
-            this.PayBtn.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(170)))), ((int)(((byte)(177)))), ((int)(((byte)(197)))));
-            this.PayBtn.Location = new System.Drawing.Point(165, 35);
-            this.PayBtn.Name = "PayBtn";
-            this.PayBtn.Size = new System.Drawing.Size(208, 66);
-            this.PayBtn.TabIndex = 1;
-            this.PayBtn.Text = "Calculate";
-            this.PayBtn.UseVisualStyleBackColor = false;
-            this.PayBtn.Click += new System.EventHandler(this.PayBtn_Click);
-            // 
             // ClearBtn
             // 
             this.ClearBtn.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(91)))), ((int)(((byte)(103)))), ((int)(((byte)(134)))));
@@ -646,6 +632,20 @@ namespace BestOil
             this.ClearBtn.UseVisualStyleBackColor = false;
             this.ClearBtn.Visible = false;
             this.ClearBtn.Click += new System.EventHandler(this.ClearBtn_Click);
+            // 
+            // PayBtn
+            // 
+            this.PayBtn.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(74)))), ((int)(((byte)(84)))), ((int)(((byte)(109)))));
+            this.PayBtn.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.PayBtn.Font = new System.Drawing.Font("Microsoft Sans Serif", 13.8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(162)));
+            this.PayBtn.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(170)))), ((int)(((byte)(177)))), ((int)(((byte)(197)))));
+            this.PayBtn.Location = new System.Drawing.Point(165, 35);
+            this.PayBtn.Name = "PayBtn";
+            this.PayBtn.Size = new System.Drawing.Size(208, 66);
+            this.PayBtn.TabIndex = 1;
+            this.PayBtn.Text = "Calculate";
+            this.PayBtn.UseVisualStyleBackColor = false;
+            this.PayBtn.Click += new System.EventHandler(this.PayBtn_Click);
             // 
             // Form1
             // 
