@@ -319,11 +319,12 @@ namespace BestOil
 
             FileHelper.WriteToJsonFile(bill, $"{directoryName}{fileName}.json");
 
+            var desktopFolderPath = Environment.GetFolderPath(Environment.SpecialFolder.Desktop);
+            
             //save to pdf file
 
-            var desktopFolderPath = Environment.GetFolderPath(Environment.SpecialFolder.Desktop);
 
-            FileHelper.WriteToPdf(BestOilHelper.GetBillText(bill), $@"{desktopFolderPath}\{fileName}.pdf");
+            FileHelper.WriteToPdf(bill, $@"{desktopFolderPath}\{fileName}.pdf");
         }
 
         private void ClearBtn_Click(object sender, EventArgs e)
